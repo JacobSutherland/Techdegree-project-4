@@ -25,6 +25,8 @@
     //Checks whether the phrase includes a players guess
     checkLetter(letter){
     if(this.phrase.includes(letter)){
+        console.log(letter)
+        const matched = document.getElementsByClassName(letter)
         return true
         } else {
         return false
@@ -34,8 +36,8 @@
     showMatchedLetter(letter){
         const matched = document.getElementsByClassName(letter);
         for(let i = 0; i < matched.length; i++){
-            matched[i].classList.add("show");
             matched[i].classList.remove("hide");
+            matched[i].classList.add("show");
             console.log(matched[i])
         }
     }

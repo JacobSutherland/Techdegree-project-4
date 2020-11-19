@@ -5,6 +5,7 @@ const overlay = document.querySelector('#overlay');
 const scoreboard = document.querySelector('#scoreboard ol');
 const hearts = document.querySelectorAll('#scoreboard li img');
 const keyboard = document.querySelector('#qwerty');
+const keyrows = document.querySelectorAll('.keyrow button');
 
 let phraseOne = new Phrase('mario is cool');
 let phraseTwo= new Phrase('kirby');
@@ -33,8 +34,8 @@ let phraseFive = new Phrase('yoshi');
      }
      //Assigns the appropriate class based on right or wrong guesses and disables key to corresponding guesses, then calls function to evaluate win or loss each turn.
    handleInteraction(key){
-      key.disabled = true;
-         if(this.activePhrase.phrase.includes(key.textContent)){
+            key.disabled = true;
+            if(this.activePhrase.phrase.includes(key.textContent)){
             key.classList.add('chosen')
             this.activePhrase.showMatchedLetter(key.textContent);
             this.checkForWin();
@@ -68,7 +69,6 @@ let phraseFive = new Phrase('yoshi');
      gameOver(result){
       const gameOverMessage = document.querySelector('#game-over-message');
       const phraseUl = document.querySelector('#phrase ul');
-      const keyrows = document.querySelectorAll('.keyrow button');
       overlay.classList.remove('start');
       gameOverMessage.textContent = result;
       if(result === 'WINNER'){

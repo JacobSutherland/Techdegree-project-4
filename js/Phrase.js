@@ -38,7 +38,6 @@
         for(let i = 0; i < matched.length; i++){
             matched[i].classList.remove("hide");
             matched[i].classList.add("show");
-            console.log(matched[i])
         }
     }
 }

@@ -229,15 +229,21 @@ animation-iteration-count: 1;
 
 @media(max-width:700px){
 
-  .main-container {
-    display: flex;
-    flex-direction: column;
+  .header {
+    font-size: 2rem;
+  }
+
+  #banner {
+    padding: 0;
+    margin: 0;
   }
 
   #qwerty {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    padding: 0;
+    width: 90%;
   }
 
   .keyrow {
@@ -247,5 +253,14 @@ animation-iteration-count: 1;
   .key {
     font-size: 1rem;
     margin: 5px;
+    padding: 5px;
+  }
+
+  #scoreboard{
+    height: 5%;
+  }
+
+  #scoreboard img{
+    height: 1.5rem;
   }
 }

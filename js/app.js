@@ -10,6 +10,8 @@ startBtn.addEventListener('click', () => {
   game = new Game();
   game.startGame();
   hint();
+   //Adds an event to keydowns, loops over the game screen keyboard and if it isn't an incorrect guess, passes the event object to the handleInteraction() function.
+   document.addEventListener('keydown', keyDown)
   })
 
   //Adds an event to the game screen keyboard and passes the event object from said event to handleInteraction() function on game object.
@@ -20,15 +22,14 @@ startBtn.addEventListener('click', () => {
     }
   })
 
-  //Adds an event to keydowns, loops over the game screen keyboard and if it isn't an incorrect guess, passes the event object to the handleInteraction() function.
-  document.addEventListener('keydown', e =>{
+    function keyDown(e){
     let keyDown = e.code.slice(3).toLowerCase()
       for(let key of keyrows){
         if(key.textContent === keyDown && key.classList.contains('wrong') == false){
           game.handleInteraction(key);
         }
       }
-  })
+    }
 
   function hint(){
     const hintP = document.createElement('p');

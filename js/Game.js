@@ -83,13 +83,12 @@ let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal')
       }
 
       //game reset's by undoing all manipulated keys, properties, hearts, or related classes.
+      document.removeEventListener('keydown', keyDown);
       overlay.style.display = 'initial';
       while(phraseUl.firstChild){
       phraseUl.removeChild(phraseUl.firstChild);
       }
-    
       heading.removeChild(heading.lastChild)
-      
       for(let key of keyrows){
          key.classList.remove('wrong', 'chosen', 'show');
          key.disabled = false;
@@ -100,6 +99,3 @@ let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal')
       this.missed = 0;
      }
  }
-
-
-

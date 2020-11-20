@@ -6,12 +6,13 @@ const scoreboard = document.querySelector('#scoreboard ol');
 const hearts = document.querySelectorAll('#scoreboard li img');
 const keyboard = document.querySelector('#qwerty');
 const keyrows = document.querySelectorAll('.keyrow button');
+const phraseLetter = document.querySelectorAll('#phrase li');
 
-let phraseOne = new Phrase('mario is cool');
-let phraseTwo= new Phrase('kirby');
-let phraseThree = new Phrase('link');
-let phraseFour = new Phrase('samus');
-let phraseFive = new Phrase('yoshi');
+let phraseOne = new Phrase('Mario', 'Nintendo Characters: Plumber');
+let phraseTwo= new Phrase('Kirby', 'Nintendo Characters: Pink puff ball');
+let phraseThree = new Phrase('Link', 'Nintendo Characters: Hero of Hyrule');
+let phraseFour = new Phrase('Samus', 'Nintendo Characters: Alien bounty hunter');
+let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal');
 
  class Game {
      constructor(){
@@ -36,6 +37,8 @@ let phraseFive = new Phrase('yoshi');
    handleInteraction(key){
             key.disabled = true;
             if(this.activePhrase.phrase.includes(key.textContent)){
+            const letter = document.querySelector('.'+key.textContent)
+            letter.classList.add('bounce');
             key.classList.add('chosen')
             this.activePhrase.showMatchedLetter(key.textContent);
             this.checkForWin();
@@ -84,6 +87,9 @@ let phraseFive = new Phrase('yoshi');
       while(phraseUl.firstChild){
       phraseUl.removeChild(phraseUl.firstChild);
       }
+    
+      heading.removeChild(heading.lastChild)
+      
       for(let key of keyrows){
          key.classList.remove('wrong', 'chosen', 'show');
          key.disabled = false;
@@ -94,10 +100,6 @@ let phraseFive = new Phrase('yoshi');
       this.missed = 0;
      }
  }
-
-
-
-
 
 
 

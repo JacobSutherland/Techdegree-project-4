@@ -2,12 +2,14 @@
  * Project 4 - OOP Game App
  * app.js */
 const startBtn = document.querySelector('#btn__reset');
+const heading = document.querySelector('#banner');
 let game;
 
 //Adds click event to start game button, reassigns the hoisted game variable for each new game instance, and starts game.
 startBtn.addEventListener('click', () => {
   game = new Game();
   game.startGame();
+  hint();
   })
 
   //Adds an event to the game screen keyboard and passes the event object from said event to handleInteraction() function on game object.
@@ -27,8 +29,10 @@ startBtn.addEventListener('click', () => {
         }
       }
   })
-    
-  
 
-
-
+  function hint(){
+    const hintP = document.createElement('p');
+    hintP.textContent = game.activePhrase.category.toUpperCase();
+    hintP.style.color = '#4E85BE';
+    heading.appendChild(hintP);
+    }

@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: #7ad9f5;
 }
 
 li, ol, ul {
@@ -52,7 +53,7 @@ button {
   padding: .5rem 1rem;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
-  background-color: var(--color-keys-light);
+  background-color: white;
   border-radius: 5px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
@@ -86,7 +87,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: white;
 }
 
 
@@ -99,7 +100,7 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
-  background: var(--color-neutral-light);
+  background: #f6f6f6;
   border-radius: 5px;
 }
 
@@ -111,7 +112,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #ace6f6;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,7 +132,7 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: #ace6f6;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
@@ -188,7 +189,7 @@ button {
 }
 
 .win {
-  background-color: var(--color-win);
+  background-color: #bdf2d5;
 }
 
 .win a {
@@ -196,9 +197,32 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #f7a964;
 }
 
 .lose a {
   color: var(--color-lose);
+}
+
+.bounce { 
+animation-name: bounce;
+animation-duration: .9s;
+animation-iteration-count: 1;
+
+}
+
+@keyframes bounce{
+    0% {
+      top:-10%; 
+    }
+    50% {
+      top: 75%;
+    
+    }
+    75% {
+      top: 50%; 
+    }
+    100% {
+      top: 100%;
+  }
 }

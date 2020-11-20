@@ -3,8 +3,9 @@
  * Phrase.js */
 
  class Phrase {
-     constructor(phrase){
+     constructor(phrase, category){
         this.phrase = phrase.toLowerCase();
+        this.category = category;
      }
      //Parses the classes phrase value by iterating each letter and creating an LI element / adding the appropriate classes to each LI
      addPhraseToDisplay(){

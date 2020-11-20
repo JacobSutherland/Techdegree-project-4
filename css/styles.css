@@ -38,6 +38,7 @@ li, ol, ul {
 
 h2 {
   margin: 0;
+  padding: 2rem;
   text-transform: uppercase;
   font-size: var(--font-size-large);
   margin: 0;
@@ -112,7 +113,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #ace6f6;
+  background-color: #3d6cb9;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -132,7 +133,7 @@ button {
 }
 
 .chosen {
-  background: #ace6f6;
+  background: #3d6cb9;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
@@ -181,7 +182,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #3a4042;
 }
 
 .start a {
@@ -208,7 +209,6 @@ button {
 animation-name: bounce;
 animation-duration: .9s;
 animation-iteration-count: 1;
-
 }
 
 @keyframes bounce{

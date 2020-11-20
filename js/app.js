@@ -3,6 +3,7 @@
  * app.js */
 const startBtn = document.querySelector('#btn__reset');
 const heading = document.querySelector('#banner');
+const header = document.querySelector('.header');
 let game;
 
 //Adds click event to start game button, reassigns the hoisted game variable for each new game instance, and starts game.
@@ -10,6 +11,7 @@ startBtn.addEventListener('click', () => {
   game = new Game();
   game.startGame();
   hint();
+  header.classList.add('bounce');
    //Adds an event to keydowns, loops over the game screen keyboard and if it isn't an incorrect guess, passes the event object to the handleInteraction() function.
    document.addEventListener('keydown', keyDown)
   })
@@ -34,6 +36,6 @@ startBtn.addEventListener('click', () => {
   function hint(){
     const hintP = document.createElement('p');
     hintP.textContent = game.activePhrase.category.toUpperCase();
-    hintP.style.color = '#4E85BE';
+    hintP.style.color = '#363434';
     heading.appendChild(hintP);
     }

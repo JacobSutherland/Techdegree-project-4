@@ -93,6 +93,8 @@ let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal')
          key.classList.remove('wrong', 'chosen', 'show');
          key.disabled = false;
       }
+      header.classList.remove('bounce');
+      console.log(header.classList)
       for(let heart of hearts){
          heart.src = '/images/liveHeart.png'
       }

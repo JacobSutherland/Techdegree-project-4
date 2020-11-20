@@ -226,3 +226,21 @@ animation-iteration-count: 1;
       top: 100%;
   }
 }
+
+@media(max-width:700px){
+
+  #qwerty {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .keyrow {
+    flex-wrap: wrap;
+    margin: -2px;
+  }
+
+  .key {
+    font-size: 1rem;
+  }
+}

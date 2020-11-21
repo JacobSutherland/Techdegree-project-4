@@ -20,7 +20,7 @@ const phraseLetter = document.querySelectorAll('#phrase li');
            {phrase: 'Yoshi', hint: "Mario's dinosauar pal"},
            {phrase: 'Donkey Kong', hint: 'This big monkey sure loves barrels'},
            {phrase: 'Tom Nook', hint: "He's a racoon with a capitalist spirit"},
-           {phrase: 'KK Slider', hint: "The hottest artist in Animal Crossing"},
+           {phrase: 'KK Slider', hint: "The hottest artist in your Animal Crossing town"},
            {phrase: 'Samus', hint: 'Intergalactic bounty hunter'},   
          ]
      }
@@ -35,7 +35,7 @@ const phraseLetter = document.querySelectorAll('#phrase li');
         overlay.style.display = 'none';
         this.setUpNewPhrase();
         this.activePhrase = this.getRandomPhrase();
-        this.activePhrase.addPhraseToDisplay();
+        this.activePhrase.addPhraseToDisplay(this.activePhrase);
      }
      //creates a random number based on the length of the game objects phrases array, then uses that random number to pass as an index value, finally returning that phrase as the current phrase.
      getRandomPhrase(){
@@ -46,10 +46,12 @@ const phraseLetter = document.querySelectorAll('#phrase li');
      }
      //Assigns the appropriate class based on right or wrong guesses and disables key to corresponding guesses, then calls function to evaluate win or loss each turn. the parameter 'Key' is the event object being passed from an event listener on keydown and click events in app.js
    handleInteraction(key){
-            key.disabled = true;
-            if(this.activePhrase.phrase.includes(key.textContent)){
-            const letter = document.querySelector('.'+key.textContent)
+         key.disabled = true;
+         if(this.activePhrase.checkLetter(key.textContent)){
+            const letterNodeList = document.querySelectorAll('.'+key.textContent)
+            for(let letter of letterNodeList){
             letter.classList.add('bounce');
+            }
             key.classList.add('chosen')
             this.activePhrase.showMatchedLetter(key.textContent);
             this.checkForWin();
@@ -60,8 +62,8 @@ const phraseLetter = document.querySelectorAll('#phrase li');
 }
    //Increments the Games's missed property on each call from handleInteraction() until 5 while updating the hearts images
      removeLife(){
+      hearts[this.missed].src = 'images/lostHeart.png'
       this.missed += 1;
-      hearts[this.missed - 1].src = 'images/lostHeart.png'
       if(this.missed === 5){
          this.gameOver('GOOD TRY, TAKE ANOTHER SHOT');
       }
@@ -74,7 +76,7 @@ const phraseLetter = document.querySelectorAll('#phrase li');
             if(letter.classList.contains('show')||letter.classList.contains('space')){
                correct += 1;
             }
-            if(correct === phrase.length && this.missed < 5){
+            if(correct === phrase.length){
                this.gameOver('WINNER');
             }
          }

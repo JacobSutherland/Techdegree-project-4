@@ -10,7 +10,8 @@ let game;
 startBtn.addEventListener('click', () => {
   game = new Game();
   game.startGame();
-  hint();
+  for(let i = 0; i < phrase.length; i++){
+   }
   header.classList.add('bounce');
    //Adds an event to keydowns, loops over the game screen keyboard and if it isn't an incorrect guess, passes the event object to the handleInteraction() function.
    document.addEventListener('keydown', keyDown)
@@ -24,6 +25,7 @@ startBtn.addEventListener('click', () => {
     }
   })
 
+//Adds an event to pass keydown events to handleInteraction() method
     function keyDown(e){
     let keyDown = e.code.slice(3).toLowerCase()
       for(let key of keyrows){
@@ -31,11 +33,4 @@ startBtn.addEventListener('click', () => {
           game.handleInteraction(key);
         }
       }
-    }
-
-  function hint(){
-    const hintP = document.createElement('p');
-    hintP.textContent = game.activePhrase.category.toUpperCase();
-    hintP.style.color = '#363434';
-    heading.appendChild(hintP);
     }

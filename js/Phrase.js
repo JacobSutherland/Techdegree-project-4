@@ -8,7 +8,7 @@
         this.category = category;
      }
      //Parses the classes phrase value by iterating each letter and creating an LI element / adding the appropriate classes to each LI
-     addPhraseToDisplay(){
+     addPhraseToDisplay(activePhrase){
             const phrase = document.querySelector('#phrase ul');
             for(let char of this.phrase){
                 if(char !== ' '){
@@ -22,11 +22,17 @@
                 phrase.appendChild(space)
             }
         }
+        function hint(activePharse){
+            const hintP = document.createElement('p');
+            hintP.textContent = activePhrase.category.toUpperCase();
+            hintP.style.color = '#363434';
+            heading.appendChild(hintP);
+            }
+            hint(activePhrase);
     }
     //Checks whether the phrase includes a players guess
     checkLetter(letter){
     if(this.phrase.includes(letter)){
-        console.log(letter)
         const matched = document.getElementsByClassName(letter)
         return true
         } else {

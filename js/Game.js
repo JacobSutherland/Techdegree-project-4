@@ -8,21 +8,32 @@ const keyboard = document.querySelector('#qwerty');
 const keyrows = document.querySelectorAll('.keyrow button');
 const phraseLetter = document.querySelectorAll('#phrase li');
 
-let phraseOne = new Phrase('Mario', 'Nintendo Characters: Plumber');
-let phraseTwo= new Phrase('Kirby', 'Nintendo Characters: Pink puff ball');
-let phraseThree = new Phrase('Link', 'Nintendo Characters: Hero of Hyrule');
-let phraseFour = new Phrase('Samus', 'Nintendo Characters: Alien bounty hunter');
-let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal');
-
  class Game {
      constructor(){
         this.missed = 0;
-        this.phrases = [phraseOne, phraseTwo, phraseThree, phraseFour, phraseFive];
+        this.phrases = [];
         this.activePhrase = null;
+        this.phrasePool = [
+           {phrase: 'Link', hint: 'The hero of Hyrule'},
+           {phrase: 'Luigi', hint: 'Some think this green plumber is almost as cool as his brother'},
+           {phrase: 'Kirby', hint: 'Pink puff ball'},
+           {phrase: 'Yoshi', hint: "Mario's dinosauar pal"},
+           {phrase: 'Donkey Kong', hint: 'This big monkey sure loves barrels'},
+           {phrase: 'Tom Nook', hint: "He's a racoon with a capitalist spirit"},
+           {phrase: 'KK Slider', hint: "The hottest artist in Animal Crossing"},
+           {phrase: 'Samus', hint: 'Intergalactic bounty hunter'},   
+         ]
      }
+     setUpNewPhrase(){
+      for(let phrase of this.phrasePool){
+      const word = new Phrase(phrase.phrase, phrase.hint);
+      this.phrases.push(word);
+     }
+   }
      //removes the pregame overlay screen, selects a phrase, and appends it to the screen.
      startGame(){
         overlay.style.display = 'none';
+        this.setUpNewPhrase();
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
      }
@@ -33,7 +44,7 @@ let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal')
         this.activePhrase = currentPhrase;
         return currentPhrase;
      }
-     //Assigns the appropriate class based on right or wrong guesses and disables key to corresponding guesses, then calls function to evaluate win or loss each turn.
+     //Assigns the appropriate class based on right or wrong guesses and disables key to corresponding guesses, then calls function to evaluate win or loss each turn. the parameter 'Key' is the event object being passed from an event listener on keydown and click events in app.js
    handleInteraction(key){
             key.disabled = true;
             if(this.activePhrase.phrase.includes(key.textContent)){
@@ -50,7 +61,7 @@ let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal')
    //Increments the Games's missed property on each call from handleInteraction() until 5 while updating the hearts images
      removeLife(){
       this.missed += 1;
-      hearts[this.missed - 1].src = '/images/lostHeart.png'
+      hearts[this.missed - 1].src = 'images/lostHeart.png'
       if(this.missed === 5){
          this.gameOver('GOOD TRY, TAKE ANOTHER SHOT');
       }
@@ -94,9 +105,8 @@ let phraseFive = new Phrase('Yoshi', 'Nintendo Characters: Marios dinosaur pal')
          key.disabled = false;
       }
       header.classList.remove('bounce');
-      console.log(header.classList)
       for(let heart of hearts){
-         heart.src = '/images/liveHeart.png'
+         heart.src = 'images/liveHeart.png'
       }
       this.missed = 0;
      }

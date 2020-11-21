@@ -28,7 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
-  background-color: #7ad9f5;
+  background-color: #28c7fa;
 }
 
 li, ol, ul {
@@ -190,7 +190,7 @@ button {
 }
 
 .win {
-  background-color: #bdf2d5;
+  background-color: #22eaaa;
 }
 
 .win a {
@@ -198,7 +198,7 @@ button {
 }
 
 .lose {
-  background-color: #f7a964;
+  background-color: #ee5a5a;
 }
 
 .lose a {
